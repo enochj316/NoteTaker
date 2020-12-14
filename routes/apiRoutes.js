@@ -1,49 +1,43 @@
+// const dbJSON = require('./db/db.json');
+
 const fs = require("fs");
 
-let notes = [];
-var lastId = 0;
+//API Routing: 
+module.exports = (app) => {
+     //* GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+     let noteList = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
 
-init();
-module.exports = function (app) {
-
-     app.get("/Notetaker/notes", function (req, res) {
-          res.json(notes);
+     app.get("/api/notes", (req, res) => {
+          return res.json(noteList);
      });
 
-     app.post("/api/index", function (req, res) {
-          req.body.id = parseInt(lastId);
-          notes.push(req.body);
-          writeToJsonFile(notes);
-          res.json(true);
-     });
-
-     app.delete("/api/index/:id", function (req, res) {
-          var filteredNotes = notes.filter(note => note.id !== parseInt(req.params.id));
-          writeToJsonFile(filteredNotes);
-          notes = filteredNotes;
-          res.json(true);
-     });
-
-};
-
-function init() {
-     fs.readFile("./db/notes.json", "utf8", function (err, data) {
-          if (err) {
-               throw err;
+     //  * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+     app.post('/api/notes', (req, res) => {
+          // get Id of last note if it exists
+          let lastId;
+          if (noteList.length) {
+               lastId = Math.max(...(noteList.map(note => note.id)));
+               //Otherwise set to 0
+          } else {
+               lastId = 0;
           }
-          let notesJSON = JSON.parse(data);
-          notesJSON.forEach(function (note) {
-               notes.push(note);
-          });
-          lastId = Math.max(...notes.map(obj => obj.id), 0) + 1;
-     });
-};
+          // console.log(lastId);
+          //Starts the id's at 1
+          const id = lastId + 1;
 
-function writeToJsonFile(notes) {
-     let notesJSON = JSON.stringify(notes, null, 2);
-     fs.writeFile("./db/notes.json", notesJSON, function (err) {
-          if (err) {
-               throw err;
-          }
+          // pushes the id of the note along with the rest of the text/input of the array in the request.body
+          noteList.push({ id, ...req.body });
+          //Removes last index
+          res.json(noteList.slice(-1));
+     });
+
+     // * DELETE `/api/notes/:id` -
+     app.delete('/api/notes/:id', (req, res) => {
+          //finds note by id, then converts the string into a JSON object with the id parameters of the request made
+          let findNote = noteList.find(({ id }) => id === JSON.parse(req.params.id));
+
+          //Delete object matching the index of the note ID
+          noteList.splice(noteList.indexOf(findNote), 1);
+          res.end("Note was deleted");
      });
 };
