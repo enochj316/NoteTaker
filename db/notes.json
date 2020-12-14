@@ -1,17 +1,17 @@
 [
     {
-        "id": 2,
-        "title": "2nd Note",
-        "note": "This is the second note"
+        "title": "Hello Github",
+        "text": "I hope you have a nice day.",
+        "id": "b0b58250-13c2-11ea-bb31-c7d28ed7fe63"
     },
     {
-        "id": 5,
-        "title": "5th Note",
-        "note": "This is the fifth note."
+        "title": "Tacocat ",
+        "text": "Is my favorite palindrome.",
+        "id": "c9aea2f0-13c2-11ea-94a2-2f9f7e8b3ed1"
     },
     {
-        "id": 6,
-        "title": "6th Note",
-        "note": "This is the sixth note"
+        "title": "Groceries",
+        "text": "More butter\nMore Milk\nMore Yogurt\nMore ice cream\nKnow what just more dairy!",
+        "id": "f896ff90-13c2-11ea-a2a5-21948dcc3ab1"
     }
 ]
