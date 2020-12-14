@@ -8,7 +8,7 @@ html, body {
 
 .bg {
   /* The image used */
-  background-image: url("/public/plant.jpg");
+  /* background-image: url("/public/plant.jpg"); */
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */
