@@ -1,5 +1,3 @@
-//Don't change anything here
-
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
@@ -9,7 +7,7 @@ var $noteList = $(".list-container .list-group");
 // activeNote is used to keep track of the note in the textarea
 var activeNote = {};
 
-// A function for getting all notes from the db
+// Function for getting all notes from db.json
 var getNotes = function () {
     return $.ajax({
         url: "/api/notes",
@@ -17,7 +15,7 @@ var getNotes = function () {
     });
 };
 
-// A function for saving a note to the db
+// Function for saving notes
 var saveNote = function (note) {
     return $.ajax({
         url: "/api/notes",
@@ -26,7 +24,7 @@ var saveNote = function (note) {
     });
 };
 
-// A function for deleting a note from the db
+// Function for deleting notes
 var deleteNote = function (id) {
     return $.ajax({
         url: "api/notes/" + id,
