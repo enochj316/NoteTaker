@@ -1,6 +1,8 @@
 # Express NoteTaker
 
-<iframe src="https://giphy.com/embed/ZwiPkhPUj4yP9c948z" width="480" height="226" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ZwiPkhPUj4yP9c948z">via GIPHY</a></p>
+
+![alt text](https://giphy.com/embed/ZwiPkhPUj4yP9c948z "Giphy")
+
 
 ## Purpose
 
