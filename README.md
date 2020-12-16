@@ -1,8 +1,7 @@
 # Express NoteTaker
 
 
-![alt text](https://giphy.com/embed/ZwiPkhPUj4yP9c948z "Giphy")
-
+![Demo](assets/Animated)
 
 ## Purpose
 
